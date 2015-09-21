@@ -21,6 +21,11 @@
   template: src=rabbitmq.config.tpl dest=/etc/rabbitmq/rabbitmq.config
   notify: restart rabbitmq
 
-- name: enable management console
+- name: fetch delayed messages plugin
+  sudo: yes
   notify: restart rabbitmq
-  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  get_url: url=http://www.rabbitmq.com/community-plugins/v3.5.x/rabbitmq_delayed_message_exchange-0.0.1-rmq3.5.x-9bf265e4.ez dest=/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.4/plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.5.x-9bf265e4.ez
+
+- name: enable rabbit plugins
+  notify: restart rabbitmq
+  rabbitmq_plugin: names=rabbitmq_management,rabbitmq_delayed_message_exchange,rabbitmq_shovel state=enabled
