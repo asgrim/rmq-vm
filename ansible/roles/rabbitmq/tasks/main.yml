@@ -28,4 +28,4 @@
 
 - name: enable rabbit plugins
   notify: restart rabbitmq
-  rabbitmq_plugin: names=rabbitmq_management,rabbitmq_delayed_message_exchange,rabbitmq_shovel state=enabled
+  rabbitmq_plugin: names=rabbitmq_management,rabbitmq_delayed_message_exchange,rabbitmq_shovel,rabbitmq_shovel_management state=enabled
