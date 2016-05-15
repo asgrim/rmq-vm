@@ -5,26 +5,31 @@
   apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' state=present
 
 - name: Update apt
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: update_cache=yes
 
 - name: Install rabbitmq
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: pkg=rabbitmq-server state=latest
 
 - name: create /etc/rabbitmq
-  sudo: yes
+  become: yes
+  become_method: sudo
   file: path=/etc/rabbitmq state=directory
 
 - name: create rabbitmq config
-  sudo: yes
+  become: yes
+  become_method: sudo
   template: src=rabbitmq.config.tpl dest=/etc/rabbitmq/rabbitmq.config
   notify: restart rabbitmq
 
 - name: fetch delayed messages plugin
-  sudo: yes
+  become: yes
+  become_method: sudo
   notify: restart rabbitmq
-  get_url: url=http://www.rabbitmq.com/community-plugins/v3.5.x/rabbitmq_delayed_message_exchange-0.0.1-rmq3.5.x-9bf265e4.ez dest=/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.5.x-9bf265e4.ez
+  get_url: url=http://www.rabbitmq.com/community-plugins/v3.6.x/rabbitmq_delayed_message_exchange-0.0.1.ez dest=/usr/lib/rabbitmq/lib/rabbitmq_server-3.6.1/plugins/rabbitmq_delayed_message_exchange-0.0.1.ez
 
 - name: enable rabbit plugins
   notify: restart rabbitmq

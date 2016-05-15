@@ -34,8 +34,9 @@ Vagrant.configure("2") do |config|
         ]
     end
 
-    config.vm.box = "asgrim/rmq-vm"
-    config.vm.box_url = "https://www.dropbox.com/s/pm2knx3zipe1k1d/rmq-vm.box?dl=1"
+    config.vm.box = "ubuntu/trusty64"
+#    config.vm.box = "asgrim/rmq-vm"
+#    config.vm.box_url = "https://www.dropbox.com/s/pm2knx3zipe1k1d/rmq-vm.box?dl=1"
     
     config.vm.network :private_network, ip: "192.168.33.99"
     config.ssh.forward_agent = true

@@ -1,5 +1,6 @@
 - name: Install php5-cli
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: pkg=php5-cli state=latest
 
 - name: ensure timezone is set in cli php.ini
