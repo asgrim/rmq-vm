@@ -1,6 +1,7 @@
 ---
 - hosts: all
-  sudo: true
+  become: yes
+  become_method: sudo
   vars:
     web_server: apachephp
     servername: rmq-slides 192.168.33.99

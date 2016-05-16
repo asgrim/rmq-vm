@@ -1,10 +1,12 @@
 ---
 - name: Update apt
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: update_cache=yes
 
 - name: Install System Packages
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: pkg={{ item }} state=latest
   with_items:
     - curl
@@ -12,24 +14,29 @@
     - python-software-properties
 
 - name: Add ppa Repository
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt_repository: repo=ppa:ondrej/{{ php_ppa }}
 
 - name: Update apt
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: update_cache=yes
 
 - name: Install Extra Packages
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: pkg={{ item }} state=latest
-  with_items: sys_packages
+  with_items: "{{ sys_packages }}"
 
 - name: Configure the timezone
-  sudo: yes
+  become: yes
+  become_method: sudo
   template: src=timezone.tpl dest=/etc/timezone
 
 - name: More Configure the timezone
-  sudo: yes
+  become: yes
+  become_method: sudo
   file: src=/usr/share/zoneinfo/{{timezone}} dest=/etc/localtime state=link force=yes backup=yes
 
 - name: Set the hostname in /etc/hostname

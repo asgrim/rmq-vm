@@ -1,5 +1,6 @@
 - name: Install php5
-  sudo: yes
+  become: yes
+  become_method: sudo
   apt: pkg=php5 state=latest
 
 - name: ensure timezone is set in apache2 php.ini
