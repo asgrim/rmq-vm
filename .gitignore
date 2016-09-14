@@ -1,4 +1,4 @@
 .vagrant
 .idea
-rmq-vm.box
+rmq-vm*.box
 *.log
