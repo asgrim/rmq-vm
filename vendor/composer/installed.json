@@ -30,7 +30,7 @@
         "suggest": {
             "ext-sockets": "Use AMQPSocketConnection"
         },
-        "time": "2016-04-11 14:30:01",
+        "time": "2016-04-11T14:30:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

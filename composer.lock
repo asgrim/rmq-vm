@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b46c8afbb3050283c50698525e36af19",
     "content-hash": "11af70615a182559be184c357346a13f",
     "packages": [
         {
@@ -75,7 +74,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2016-04-11 14:30:01"
+            "time": "2016-04-11T14:30:01+00:00"
         }
     ],
     "packages-dev": [],
